@@ -1,0 +1,33 @@
+#include <PRIZM.h>    
+
+PRIZM prizm;          
+
+
+
+
+void setup() {
+
+  prizm.PrizmBegin(); 
+  
+
+}
+
+void loop() {
+
+  prizm.setMotorTarget(1,360,1440);   // Spin DC motor 1 at a constant 360 degrees per second and stop when encoder count reaches 1440
+                                      // For TETRIX TorqueNADO encoders, 1440 = 1 motor shaft revolution. (1440 / 4 = 360)
+
+  delay(2000);    // wait here for 2 seconds while motor gets to it's destination
+
+  prizm.setMotorTarget(1,360,0);      // Spin DC motor at 360 degrees per second back to encoder position "0".   
+
+  delay(2000);    // wait here for 2 seconds, and repeat
+
+  prizm.setMotorTarget(1,360,-1440);
+
+  delay(2000);
+
+  prizm.setMotorTarget(1,360,0);
+
+  delay(2000);
+}
