@@ -39,13 +39,13 @@ void loop() {     // repeat in a loop
     
     prizm.setServoPosition(1,0);    // rotate servo1 to 0 degrees
     delay(300);// wait for 0.3 seconds to give servo1 time
-                                  // to get to position 180
+                             
     
   }
   else
   {
     prizm.setServoPosition(1,180);  // rotate servo1 to 180 degrees
-    delay(1000);
+    delay(300); // wait 0.3 second
   }
 
  
