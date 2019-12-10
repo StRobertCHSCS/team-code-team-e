@@ -17,10 +17,10 @@ void setup() {
 void loop() {     // repeat in a loop
 
   prizm.setServoPosition(1,180);  // rotate servo1 to 180 degrees
-  delay(3000);                    // wait for 3 seconds to give servo1 time
+  delay(2000);                    // wait for 3 seconds to give servo1 time
                                   // to get to position 180
   prizm.setServoPosition(1,0);    // rotate servo1 to 0 degrees
-  delay(3000);                    // wait for 3 seconds to give servo1 time
+  delay(2000);                    // wait for 3 seconds to give servo1 time
                                   // to get to position 0
  
 }
