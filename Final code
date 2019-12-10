@@ -1,8 +1,4 @@
-/*  PRIZM Controller example program
- *  This program sets the speed of servo 1 to 25%.
- *  Servo 1 is then rotated back and forth between 0 and 180 degree range.
- *  author PWU on 08/05/2016
-*/
+
 
 #include <PRIZM.h>    // include the PRIZM library in the sketch
 #include <TELEOP.h>   // TETRIX TeleOp module Library
@@ -34,7 +30,7 @@ void loop() {     // repeat in a loop
   ps4.getPS4();                           // If PS4 controller has been succesfully connected, control motors
   PowerM1 = ps4.Motor(LY);                  // Power (speed) and direction of Motor 1 is set by position of Left Y-axis Joystick
   PowerM2 = ps4.Motor(RY);                  // Power (speed) and direction of Motor 2 is set by position of Right Y-axis Joystick
-  prizm.setMotorPowers(PowerM1, PowerM2);   // set motor output power levels for PRIZM DC motor channels 1 and 2
+  prizm.setMotorPowers(PowerM1, -PowerM2);   // set motor output power levels for PRIZM DC motor channels 1 and 2
 
 
 
@@ -42,7 +38,7 @@ void loop() {     // repeat in a loop
   {
     
     prizm.setServoPosition(1,0);    // rotate servo1 to 0 degrees
-    delay(300);// wait for 3 seconds to give servo1 time
+    delay(300);// wait for 0.3 seconds to give servo1 time
                                   // to get to position 180
     
   }
