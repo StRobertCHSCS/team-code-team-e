@@ -1,4 +1,8 @@
-
+/*  PRIZM Controller example program
+ *  This program sets the speed of servo 1 to 25%.
+ *  Servo 1 is then rotated back and forth between 0 and 180 degree range.
+ *  author PWU on 08/05/2016
+*/
 
 #include <PRIZM.h>    // include the PRIZM library in the sketch
 #include <TELEOP.h>   // TETRIX TeleOp module Library
@@ -13,6 +17,7 @@ void setup() {
 
   prizm.PrizmBegin();         // initialize the PRIZM controller
   prizm.setServoSpeed(1,25);  // set servo 1 speed to 25%
+  prizm.setServoSpeed(2,100);
   prizm.PrizmBegin();     // initialize PRIZM
   ps4.setDeadZone (LEFT,10);     // Sets a Left Joystick Dead Zone axis range of +/- 10 about center stick
   ps4.setDeadZone(RIGHT,10);     // Sets a Right Joystick Dead Zone axis range of +/- 10 about center stick
@@ -31,21 +36,22 @@ void loop() {     // repeat in a loop
   PowerM1 = ps4.Motor(LY);                  // Power (speed) and direction of Motor 1 is set by position of Left Y-axis Joystick
   PowerM2 = ps4.Motor(RY);                  // Power (speed) and direction of Motor 2 is set by position of Right Y-axis Joystick
   prizm.setMotorPowers(PowerM1, -PowerM2);   // set motor output power levels for PRIZM DC motor channels 1 and 2
-
-
-
-  if ((prizm.readSonicSensorCM(3) < 7) and (ps4.Button(UP)) == false)
+  if (ps4.Button(R1))
   {
-    
-    prizm.setServoPosition(1,0);    // rotate servo1 to 0 degrees
-    delay(300);// wait for 0.3 seconds to give servo1 time
-                             
-    
+    prizm.setServoPosition(2,0);
+  }
+  else if (ps4.Button(L1))
+  {
+    prizm.setServoPosition(2,180);
+  }
+
+  if ((prizm.readSonicSensorCM(3) < 7) and (ps4.Button(RIGHT)) == false)
+  {
+    prizm.setServoPosition(1,0);    // rotate servo1 to 0 degrees                             
   }
   else
   {
     prizm.setServoPosition(1,180);  // rotate servo1 to 180 degrees
-    delay(300); // wait 0.3 second
   }
 
  
